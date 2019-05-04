@@ -30,6 +30,12 @@ import { ReadModePipe } from './read-mode.pipe';
 import { FilePickerDemoComponent } from './file-picker-demo/file-picker-demo.component';
 import { FileDropzoneDemoComponent } from './file-dropzone-demo/file-dropzone-demo.component';
 import {FileHelpersModule} from 'ngx-file-helpers';
+import {UploadFileService} from './upload/upload-file.service';
+import {HttpClientModule} from '@angular/common/http';
+import {AppRoutingModule} from './app-routing.module';
+import {DetailsUploadComponent} from './upload/details-upload/details-upload.component';
+import {FormUploadComponent} from './upload/form-upload/form-upload.component';
+import {ListUploadComponent} from './upload/list-upload/list-upload.component';
 
 @NgModule({
   // declarations: [
@@ -46,9 +52,27 @@ import {FileHelpersModule} from 'ngx-file-helpers';
   //   NgxFileHelpersModule,
   //
   // ],
-  imports:      [ BrowserModule, FormsModule, BrowserAnimationsModule, MatButtonModule, MatTabsModule, MatToolbarModule, FileHelpersModule ],
-  declarations: [ AppComponent, ReadModePipe, FilePickerDemoComponent, FileDropzoneDemoComponent ],
-  // providers: [UploadFileService],
+  declarations: [
+    AppComponent,
+    DetailsUploadComponent,
+    FormUploadComponent,
+    ListUploadComponent,
+    ReadModePipe,
+    FilePickerDemoComponent,
+    FileDropzoneDemoComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatTabsModule,
+    MatToolbarModule,
+    FileHelpersModule
+  ],
+  providers: [UploadFileService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
