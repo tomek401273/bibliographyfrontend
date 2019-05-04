@@ -1,8 +1,23 @@
 <span class="mat-title">Drop a file</span>
-  
-  <div class="dropzone" [ngxFileDropzone]="readMode" (fileDrop)="addFile($event)">
+
+  <div class="dropzone center-element" [ngxFileDropzone]="readMode" (fileDrop)="addFile($event)">
+    <p>Drag and Drop File or click</p>
+    <div class="center-element">
+    <button class="btn btn-primary">ADD File</button>
+    </div>
   </div>
-  
+
+<div class="center-element">
+  <p>Drag and Drop File or click</p>
+  <p>A paragraph.</p>
+<br>
+  <p>A paragraph.</p>
+  <br>
+  <div class="center-element">
+    <button>ADD File</button>
+  </div>
+</div>
+
   <span class="mat-title" *ngIf="files.length">Dropped files</span>
   <ul>
     <li *ngFor="let file of files">

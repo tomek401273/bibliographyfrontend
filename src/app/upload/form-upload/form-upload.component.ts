@@ -9,9 +9,9 @@ import { UploadFileService } from '../upload-file.service';
 })
 export class FormUploadComponent implements OnInit {
 
-  selectedFiles: FileList
-  currentFileUpload: File
-  progress: { percentage: number } = { percentage: 0 }
+  selectedFiles: FileList;
+  currentFileUpload: File;
+  progress: { percentage: number } = { percentage: 0 };
 
   constructor(private uploadService: UploadFileService) { }
 
@@ -19,7 +19,7 @@ export class FormUploadComponent implements OnInit {
   }
 
   selectFile(event) {
-    const file = event.target.files.item(0)
+    const file = event.target.files.item(0);
 
     if (file.type.match('image.*')) {
       this.selectedFiles = event.target.files;
@@ -31,20 +31,24 @@ export class FormUploadComponent implements OnInit {
   upload() {
     this.progress.percentage = 0;
 
-    this.currentFileUpload = this.selectedFiles.item(0)
+    this.currentFileUpload = this.selectedFiles.item(0);
     this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(event => {
       if (event.type === HttpEventType.UploadProgress) {
         this.progress.percentage = Math.round(100 * event.loaded / event.total);
       } else if (event instanceof HttpResponse) {
         console.log('File is completely uploaded!');
       }
-    }, error1 => console.log(error1))
+    }, error1 => console.log(error1));
 
-    this.selectedFiles = undefined
+    this.selectedFiles = undefined;
   }
 
   getData() {
-    this.uploadService.getSth().subscribe(value => console.log(value), error1 => console.log(error1))
+    this.uploadService.getSth().subscribe(value => console.log(value), error1 => console.log(error1));
+  }
+
+  loginOnServer() {
+    this.uploadService.login();
   }
 
 }
