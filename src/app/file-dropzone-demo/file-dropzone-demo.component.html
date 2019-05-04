@@ -1,22 +1,18 @@
 <span class="mat-title">Drop a file</span>
 
-  <div class="dropzone center-element" [ngxFileDropzone]="readMode" (fileDrop)="addFile($event)">
-    <p>Drag and Drop File or click</p>
-    <div class="center-element">
-    <button class="btn btn-primary">ADD File</button>
+<div class="container center-element">
+  <div class="dropzone " [ngxFileDropzone]="readMode" (fileDrop)="addFile($event)">
+
+    <div class="">
+      <p>Drag and Drop File or click</p>
+      <div class="center-element">
+        <button class="btn btn-primary">ADD File</button>
+      </div>
     </div>
   </div>
-
-<div class="center-element">
-  <p>Drag and Drop File or click</p>
-  <p>A paragraph.</p>
-<br>
-  <p>A paragraph.</p>
-  <br>
-  <div class="center-element">
-    <button>ADD File</button>
-  </div>
 </div>
+
+
 
   <span class="mat-title" *ngIf="files.length">Dropped files</span>
   <ul>
@@ -25,3 +21,23 @@
       <pre>{{file.content}}</pre>
     </li>
   </ul>
+<hr>
+<span class="mat-title">Pick an image</span>
+<br>
+<span>{{status}}</span>
+
+<figure *ngIf="picked">
+  <img [src]="picked.content">
+
+  <figcaption>
+    File:
+    <strong>{{picked.name}}</strong>
+    <br> {{picked.size}} bytes
+    <br> Read as {{picked.readMode | readMode}}
+  </figcaption>
+</figure>
+
+<button type="button" mat-raised-button color="primary" #filePicker="ngxFilePicker" [ngxFilePicker]="readMode" multiple accept="image/*" (readStart)="onReadStart($event)" (filePick)="onFilePicked($event)"
+        (readEnd)="onReadEnd($event)">Browse</button>
+
+<!--<buton type="button" mat-raised-button color="primary">Submit</buton>-->

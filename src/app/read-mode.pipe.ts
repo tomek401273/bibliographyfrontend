@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
+// @ts-ignore
 import { ReadMode } from 'ngx-file-helpers';
 
 @Pipe({
