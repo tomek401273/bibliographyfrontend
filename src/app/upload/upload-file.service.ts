@@ -12,9 +12,7 @@ export class UploadFileService {
 
     formdata.append('file', file);
     const token = localStorage.getItem('token');
-    console.log(token);
     const headers = new HttpHeaders({Authorization: token});
-
     const req = new HttpRequest('POST', 'http://localhost:9001/post', formdata, {
       headers,
       reportProgress: true,

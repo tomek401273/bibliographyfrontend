@@ -1,12 +1,16 @@
 .dropzone {
   align-items: center;
-  background: lightgrey;
+  /*background: lightgrey;*/
   border: dashed 1px grey;
   display: flex;
   justify-content: center;
   height: 350px;
   width: 500px;
-  /*background-image: url("./0.jpeg");*/
+  background-image: url("./upload3.png");
+  background-size: 480px 450px;
+  background-repeat: no-repeat;
+  background-position: center;
+  /*background-position-x: 10px;*/
 }
   
 .hover {
@@ -17,4 +21,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.upload-btn {
+  position: relative;
+  top: 120px;
+  width: 110px;
+}
+.upload-label {
+  color: #3e51b5;
+  font-size: 20px;
+  font-weight: bold;
 }
