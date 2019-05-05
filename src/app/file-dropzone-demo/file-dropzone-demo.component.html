@@ -3,7 +3,8 @@
 <div class="container center-element">
   <div class="dropzone " [ngxFileDropzone]="readMode" (fileDrop)="addFile($event)">
     <div>
-      <p class="upload-label">Drag and Drop File or click</p>
+      <p class="upload-label">Drag and Drop file here</p>
+      <div class="center-element upload-label"><p>or</p></div>
       <div class="center-element">
         <button
           mat-raised-button color="primary"
@@ -12,7 +13,7 @@
           multiple accept="image/*"
           (filePick)="onFilePicked($event)"
           class="upload-btn"
-        >Browse</button>
+        >Click</button>
 
       </div>
     </div>

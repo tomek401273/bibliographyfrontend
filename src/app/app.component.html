@@ -5,26 +5,22 @@
 
 <button type="button" ngxFilePicker>Browse</button>
 <router-outlet></router-outlet>
-<mat-toolbar color="primary">
-  <h1>Angular File Helpers Demo</h1>
-  <span class="filler"></span>
-  <a href="https://github.com/fvilers/ngx-file-helpers" mat-button>
-    GitHub
-  </a>
+<mat-toolbar color="primary" class="center-element">
+  <h1 class="title">Bibliography</h1>
 </mat-toolbar>
+<app-file-dropzone-demo></app-file-dropzone-demo>
+<!--<main class="mat-typography">-->
+<!--  <mat-tab-group dynamicHeight="true">-->
+<!--    <mat-tab label="File Picker">-->
+<!--      <div class="tab-container">-->
+<!--        <app-file-picker-demo></app-file-picker-demo>-->
+<!--      </div>-->
+<!--    </mat-tab>-->
 
-<main class="mat-typography">
-  <mat-tab-group dynamicHeight="true">
-    <mat-tab label="File Picker">
-      <div class="tab-container">
-        <app-file-picker-demo></app-file-picker-demo>
-      </div>
-    </mat-tab>
-
-    <mat-tab label="File Dropzone">
-      <div class="tab-container">
-        <app-file-dropzone-demo></app-file-dropzone-demo>
-      </div>
-    </mat-tab>
-  </mat-tab-group>
-</main>
+<!--    <mat-tab label="File Dropzone">-->
+<!--      <div class="tab-container">-->
+<!--        -->
+<!--      </div>-->
+<!--    </mat-tab>-->
+<!--  </mat-tab-group>-->
+<!--</main>-->

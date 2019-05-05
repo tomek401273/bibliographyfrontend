@@ -6,11 +6,14 @@
   justify-content: center;
   height: 350px;
   width: 500px;
-  background-image: url("./upload3.png");
-  background-size: 480px 450px;
+  background-image: url("./upload2.png");
+  /*background-size: 200px 150px;*/
+  background-size: 400px 280px;
   background-repeat: no-repeat;
   background-position: center;
-  /*background-position-x: 10px;*/
+  /*background-position-x: 150px;*/
+
+  background-position-y: -65px;
 }
   
 .hover {
@@ -25,11 +28,48 @@
 
 .upload-btn {
   position: relative;
-  top: 120px;
-  width: 110px;
+  top: 60px;
+  width: 200px;
 }
 .upload-label {
   color: #3e51b5;
   font-size: 20px;
   font-weight: bold;
+  position: relative;
+  top: 50px;
+}
+
+@media only screen and (min-width: 991px) {
+  .dropzone {
+    align-items: center;
+    /*background: lightgrey;*/
+    border: dashed 1px grey;
+    display: flex;
+    justify-content: center;
+    height: 400px;
+    width: 800px;
+    background-image: url("./upload2.png");
+    /*background-size: 200px 150px;*/
+    background-size: 400px 280px;
+    background-repeat: no-repeat;
+    background-position: center;
+    /*background-position-x: 150px;*/
+
+    background-position-y: -60px;
+  }
+
+  .upload-btn {
+    position: relative;
+    top: 60px;
+    width: 200px;
+  }
+
+  .upload-label {
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+    position: relative;
+    top: 40px;
+  }
+
 }
