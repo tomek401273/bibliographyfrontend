@@ -15,6 +15,13 @@ import {HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
 import {DetailsUploadComponent} from './upload/details-upload/details-upload.component';
 import {FormUploadComponent} from './upload/form-upload/form-upload.component';
+import { InformationComponent } from './information/information.component';
+import {HeaderComponent} from './header/header.component';
+import {HomeComponent} from './home/home.component';
+import { AuthenticationComponent } from './authentication/authentication.component';
+import {AuthGuard} from './services/protect/auth-guard.service';
+import { SecuredComponent } from './secured/secured.component';
+import {LogingService} from './services/loging.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +30,12 @@ import {FormUploadComponent} from './upload/form-upload/form-upload.component';
     FormUploadComponent,
     ReadModePipe,
     FilePickerDemoComponent,
-    FileDropzoneDemoComponent
+    FileDropzoneDemoComponent,
+    InformationComponent,
+    HeaderComponent,
+    HomeComponent,
+    AuthenticationComponent,
+    SecuredComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +48,7 @@ import {FormUploadComponent} from './upload/form-upload/form-upload.component';
     MatToolbarModule,
     FileHelpersModule
   ],
-  providers: [UploadFileService],
+  providers: [UploadFileService, AuthGuard, LogingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

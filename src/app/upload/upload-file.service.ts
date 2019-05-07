@@ -13,7 +13,8 @@ export class UploadFileService {
     formdata.append('file', file);
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({Authorization: token});
-    const req = new HttpRequest('POST', 'http://localhost:9001/post', formdata, {
+    const req = new HttpRequest('POST', 'http://localhost:9001/upload/file', formdata, {
+    // const req = new HttpRequest('POST', 'http://192.168.42.66:8765/bibliography/post', formdata, {
       headers,
       reportProgress: true,
       responseType: 'text',
@@ -40,6 +41,7 @@ export class UploadFileService {
     const headers = new HttpHeaders({'Content-type': 'application/json', Accept: 'application/json'});
 
     this.http.post('http://localhost:9001/login', login, {
+    // this.http.post('http://192.168.42.66:8765/authorization-service/login', login, {
       headers,
       observe: 'response',
       responseType: 'text'

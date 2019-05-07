@@ -1,7 +1,25 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-const routes: Routes = [];
+import { HomeComponent } from './home/home.component';
+import {InformationComponent} from './information/information.component';
+import {AppComponent} from './app.component';
+import {AuthGuard} from './services/protect/auth-guard.service';
+import {SecuredComponent} from './secured/secured.component';
+
+const routes: Routes = [
+  {path: '', component: InformationComponent},
+  {
+    path: 'secured',
+    canActivate: [AuthGuard],
+    component: SecuredComponent
+  },
+  {
+    path: 'home',
+    component: HomeComponent,
+  },
+  {path: 'info', component: InformationComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

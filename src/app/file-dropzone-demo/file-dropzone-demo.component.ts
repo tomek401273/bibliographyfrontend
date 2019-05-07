@@ -3,6 +3,7 @@ import {Component, ViewChild} from '@angular/core';
 // @ts-ignore
 import {FilePickerDirective, ReadFile, ReadMode} from 'ngx-file-helpers';
 import {UploadFileService} from '../upload/upload-file.service';
+import {HttpEventType} from '@angular/common/http';
 
 @Component({
   selector: 'app-file-dropzone-demo',
@@ -20,6 +21,9 @@ export class FileDropzoneDemoComponent {
   public picked: ReadFile;
   public status: string;
 
+  currentFileUpload: File;
+  progress: { percentage: number } = { percentage: 0 };
+
 constructor(private uploadService: UploadFileService) {}
 
   @ViewChild('filePicker')
@@ -31,9 +35,19 @@ constructor(private uploadService: UploadFileService) {}
   }
 
   sendFile() {
+    this.progress.percentage =0;
+    this.currentFileUpload = this.file;
+
     this.uploadService.pushFileToStorage(this.file)
       .subscribe(
-        value => console.log(value),
+        value => {
+          console.log(value);
+          if (value.type === HttpEventType.UploadProgress) {
+            this.progress.percentage = Math.round(100 * value.loaded / value.total);
+          } else {
+            console.log('File is completely uploaded');
+          }
+        },
           error1 => console.log(error1));
   }
 
