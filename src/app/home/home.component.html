@@ -1,3 +1,35 @@
 <!--<form-upload></form-upload>-->
-<app-file-dropzone-demo></app-file-dropzone-demo>
 
+
+
+
+<main class="mat-typography">
+  <mat-tab-group dynamicHeight="true">
+    <mat-tab label="File Picker">
+      <div class="tab-container">
+       <div class="center-element">
+         <h1>Data data1</h1>
+       </div>
+        <app-file-dropzone-demo
+          (dataOutput)="handleFile($event)"
+        ></app-file-dropzone-demo>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="File Dropzone">
+      <div class="tab-container">
+        Data data2
+        <app-file-dropzone-demo
+          (dataOutput)="handleFile2($event)"
+        ></app-file-dropzone-demo>
+      </div>
+    </mat-tab>
+    <mat-tab label="Information">
+      <div class="tab-container">
+        <div class="center-element">
+          <p>Information about the author</p>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</main>

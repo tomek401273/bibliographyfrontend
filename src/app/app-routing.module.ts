@@ -6,6 +6,7 @@ import {InformationComponent} from './information/information.component';
 import {AppComponent} from './app.component';
 import {AuthGuard} from './services/protect/auth-guard.service';
 import {SecuredComponent} from './secured/secured.component';
+import {SummaryComponent} from './summary/summary.component';
 
 const routes: Routes = [
   {path: '', component: InformationComponent},
@@ -18,7 +19,8 @@ const routes: Routes = [
     path: 'home',
     component: HomeComponent,
   },
-  {path: 'info', component: InformationComponent}
+  {path: 'info', component: InformationComponent},
+  {path: 'summary', component: SummaryComponent}
 ];
 
 @NgModule({

@@ -8,7 +8,7 @@ export class UploadFileService {
   constructor(private http: HttpClient) {}
 
   pushFileToStorage(file: File): Observable<HttpEvent<{}>> {
-    let formdata: FormData = new FormData();
+    const formdata: FormData = new FormData();
 
     formdata.append('file', file);
     const token = localStorage.getItem('token');
@@ -20,7 +20,17 @@ export class UploadFileService {
       responseType: 'text',
     });
 
-    return this.http.request(req);
+    // return this.http.request(req);
+
+
+    // @ts-ignore
+    return this.http.post('http://localhost:9001/upload/file', formdata, {
+      headers,
+      observe: 'response',
+      responseType: 'text'
+    });
+
+
   }
 
   getFiles(): Observable<Object> {
@@ -50,6 +60,20 @@ export class UploadFileService {
         const token = value.headers.get('authorization');
         console.log(token);
         localStorage.setItem('token', token);
+      }, error1 => console.log(error1));
+  }
+
+  getLogic() {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({'Content-type': 'application/json', Accept: 'application/json', Authorization: token});
+
+    this.http.get('http://localhost:9001/upload/l', {
+      headers,
+      observe: 'response',
+      responseType: 'text'
+    })
+      .subscribe((value) => {
+        console.log(value);
       }, error1 => console.log(error1));
   }
 }

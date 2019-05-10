@@ -22,7 +22,9 @@ import { AuthenticationComponent } from './authentication/authentication.compone
 import {AuthGuard} from './services/protect/auth-guard.service';
 import { SecuredComponent } from './secured/secured.component';
 import {LogingService} from './services/loging.service';
-
+import { CockpitComponent } from './cockpit/cockpit.component';
+import { SummaryComponent } from './summary/summary.component';
+import {MatTableModule} from '@angular/material/table';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +37,9 @@ import {LogingService} from './services/loging.service';
     HeaderComponent,
     HomeComponent,
     AuthenticationComponent,
-    SecuredComponent
+    SecuredComponent,
+    CockpitComponent,
+    SummaryComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +50,8 @@ import {LogingService} from './services/loging.service';
     MatButtonModule,
     MatTabsModule,
     MatToolbarModule,
-    FileHelpersModule
+    FileHelpersModule,
+    MatTableModule
   ],
   providers: [UploadFileService, AuthGuard, LogingService],
   bootstrap: [AppComponent]

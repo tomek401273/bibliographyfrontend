@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Output, ViewChild} from '@angular/core';
 
 // @ts-ignore
 import {FilePickerDirective, ReadFile, ReadMode} from 'ngx-file-helpers';
@@ -25,6 +25,7 @@ export class FileDropzoneDemoComponent {
   progress: { percentage: number } = { percentage: 0 };
 
 constructor(private uploadService: UploadFileService) {}
+  @Output() dataOutput = new EventEmitter<{file: File}>();
 
   @ViewChild('filePicker')
   private filePicker: FilePickerDirective;
@@ -35,20 +36,25 @@ constructor(private uploadService: UploadFileService) {}
   }
 
   sendFile() {
-    this.progress.percentage =0;
-    this.currentFileUpload = this.file;
+    this.dataOutput.emit({
+      file: this.file
+    });
 
-    this.uploadService.pushFileToStorage(this.file)
-      .subscribe(
-        value => {
-          console.log(value);
-          if (value.type === HttpEventType.UploadProgress) {
-            this.progress.percentage = Math.round(100 * value.loaded / value.total);
-          } else {
-            console.log('File is completely uploaded');
-          }
-        },
-          error1 => console.log(error1));
+
+    // this.progress.percentage =0;
+    // this.currentFileUpload = this.file;
+    //
+    // this.uploadService.pushFileToStorage(this.file)
+    //   .subscribe(
+    //     value => {
+    //       console.log(value);
+    //       if (value.type === HttpEventType.UploadProgress) {
+    //         this.progress.percentage = Math.round(100 * value.loaded / value.total);
+    //       } else {
+    //         console.log('File is completely uploaded');
+    //       }
+    //     },
+    //       error1 => console.log(error1));
   }
 
 
