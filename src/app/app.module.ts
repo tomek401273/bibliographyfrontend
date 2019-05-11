@@ -26,6 +26,12 @@ import { CockpitComponent } from './cockpit/cockpit.component';
 import { SummaryComponent } from './summary/summary.component';
 import {MatTableModule} from '@angular/material/table';
 import { PublicationsComponent } from './summary/publications/publications.component';
+import * as PlotlyJS from 'plotly.js/dist/plotly.js';
+import { PlotlyModule } from 'angular-plotly.js';
+import {AdminService} from './services/adminService';
+
+PlotlyModule.plotlyjs = PlotlyJS;
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,9 +59,10 @@ import { PublicationsComponent } from './summary/publications/publications.compo
     MatTabsModule,
     MatToolbarModule,
     FileHelpersModule,
-    MatTableModule
+    MatTableModule,
+    PlotlyModule
   ],
-  providers: [UploadFileService, AuthGuard, LogingService],
+  providers: [UploadFileService, AuthGuard, LogingService, AdminService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

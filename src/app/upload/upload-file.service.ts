@@ -69,19 +69,19 @@ export class UploadFileService {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({'Content-type': 'application/json', Accept: 'application/json', Authorization: token});
 
-    this.http.get<Publication>('http://localhost:9001/pub', {
+    this.http.get<Publication>('http://localhost:9001/job/count/for/each/day', {
       headers
     })
-      .pipe(
-        map(value => {
-          console.log(value.authorName);
-          const pub: Publication= new Publication(value.authorName, value.publicationYear);
-          return pub;
-        })
-      )
       .subscribe((value) => {
         console.log( value);
-        console.log(value.authorName);
       }, error1 => console.log(error1));
   }
+
+// .pipe(
+//     map(value => {
+//   console.log(value.authorName);
+//   const pub: Publication= new Publication(value.authorName, value.publicationYear);
+//   return pub;
+// })
+// )
 }

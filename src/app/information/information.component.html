@@ -1,6 +1,14 @@
 <br/>
 <div class="container">
-  <p>This is a bibliography application </p>
-  <p>You could use it to check your bibliography mistakes in your diploma</p>
-  <p>If you want to use it login or create an account</p>
+  <div class="center-element">
+    <ul>
+      <li>This is a bibliography application </li>
+      <li>You could use it to check your bibliography mistakes in your diploma</li>
+      <li>If you want to use it login or create an account</li>
+    </ul>
+  </div>
+  <div class="row center-element">
+    <plotly-plot [data]="graph.data" [layout]="graph.layout"></plotly-plot>
+  </div>
 </div>
+
