@@ -1,7 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpRequest, HttpEvent, HttpHeaders, HttpResponse} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
-
+import {Publication} from '../model/publication';
+// import { Observable, Subscriber } from 'rxjs';
+import { tap, map, filter } from 'rxjs/operators';
 @Injectable()
 export class UploadFileService {
 
@@ -67,13 +69,19 @@ export class UploadFileService {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({'Content-type': 'application/json', Accept: 'application/json', Authorization: token});
 
-    this.http.get('http://localhost:9001/upload/l', {
-      headers,
-      observe: 'response',
-      responseType: 'text'
+    this.http.get<Publication>('http://localhost:9001/pub', {
+      headers
     })
+      .pipe(
+        map(value => {
+          console.log(value.authorName);
+          const pub: Publication= new Publication(value.authorName, value.publicationYear);
+          return pub;
+        })
+      )
       .subscribe((value) => {
-        console.log(value);
+        console.log( value);
+        console.log(value.authorName);
       }, error1 => console.log(error1));
   }
 }
