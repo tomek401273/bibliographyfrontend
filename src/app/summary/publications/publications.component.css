@@ -1,0 +1,21 @@
+table {
+  width: 100%;
+}
+.center-element {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+table {
+  text-align: center !important;
+  width: 100%;
+}
+
+.mat-header-cell {
+  text-align: center;
+}
+.example-container {
+  height: 200px;
+  overflow: auto;
+}

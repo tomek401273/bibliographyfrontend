@@ -25,6 +25,7 @@ import {LogingService} from './services/loging.service';
 import { CockpitComponent } from './cockpit/cockpit.component';
 import { SummaryComponent } from './summary/summary.component';
 import {MatTableModule} from '@angular/material/table';
+import { PublicationsComponent } from './summary/publications/publications.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +40,8 @@ import {MatTableModule} from '@angular/material/table';
     AuthenticationComponent,
     SecuredComponent,
     CockpitComponent,
-    SummaryComponent
+    SummaryComponent,
+    PublicationsComponent,
   ],
   imports: [
     BrowserModule,
