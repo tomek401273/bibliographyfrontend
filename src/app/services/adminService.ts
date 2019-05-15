@@ -13,4 +13,12 @@ export class AdminService {
       headers
     });
   }
+
+  getReport() {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({'Content-type': 'application/json', Accept: 'application/json', Authorization: token});
+    return this.http.get('http://localhost:8080/generate', {
+      headers
+    });
+  }
 }

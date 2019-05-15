@@ -5,10 +5,9 @@
 
 <main class="mat-typography">
   <mat-tab-group dynamicHeight="true" mat-align-tabs="center">
-    <mat-tab label="File Picker">
+    <mat-tab label="Check Bigliography">
       <div class="tab-container">
        <div class="center-element">
-         <h1>Data data1</h1>
        </div>
         <app-file-dropzone-demo
           (dataOutput)="handleFile($event)"
@@ -16,7 +15,7 @@
       </div>
     </mat-tab>
 
-    <mat-tab label="File Dropzone">
+    <mat-tab label="Convert To Pdf">
       <div class="tab-container">
         Data data2
         <app-file-dropzone-demo
@@ -24,6 +23,16 @@
         ></app-file-dropzone-demo>
       </div>
     </mat-tab>
+
+    <mat-tab label="Order Bibliography">
+      <div class="tab-container">
+        Data data2
+        <app-file-dropzone-demo
+          (dataOutput)="handleFile3($event)"
+        ></app-file-dropzone-demo>
+      </div>
+    </mat-tab>
+
     <mat-tab label="Information">
       <div class="tab-container">
         <div class="center-element">

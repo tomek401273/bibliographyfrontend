@@ -33,4 +33,7 @@ export class InformationComponent implements OnInit {
   ngOnInit() {
   }
 
+  getReport() {
+    window.location.replace('http://localhost:8080/generate');
+  }
 }

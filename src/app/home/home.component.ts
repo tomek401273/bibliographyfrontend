@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UploadFileService} from '../upload/upload-file.service';
 import {HttpEvent, HttpEventType, HttpResponse} from '@angular/common/http';
 import {Router} from '@angular/router';
+import {getAllRouteGuards} from '@angular/router/src/utils/preactivation';
 
 @Component({
   selector: 'app-home',
@@ -42,5 +43,12 @@ export class HomeComponent implements OnInit {
   handleFile2(uploadFile: {file: File}) {
     console.log('handle2');
     console.log(uploadFile.file.name + uploadFile.file.lastModified);
+    this.uploadService.convertDocToPdf(uploadFile.file);
+  }
+
+  handleFile3(uploadFile: {file: File}) {
+    console.log('handle3');
+    console.log(uploadFile.file.name + uploadFile.file.lastModified);
+    this.uploadService.orderBigliography(uploadFile.file);
   }
 }
