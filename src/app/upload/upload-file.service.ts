@@ -17,7 +17,7 @@ export class UploadFileService {
     formdata.append('file', file);
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({Authorization: token});
-    const req = new HttpRequest('POST', 'http://localhost:9001/upload/file', formdata, {
+    const req = new HttpRequest('POST', 'http://192.168.42.20:8765/bibliography/upload/file', formdata, {
     // const req = new HttpRequest('POST', 'http://192.168.42.66:8765/bibliography/post', formdata, {
       headers,
       reportProgress: true,
@@ -28,7 +28,7 @@ export class UploadFileService {
 
 
     // @ts-ignore
-    return this.http.post('http://localhost:9001/upload/file', formdata, {
+    return this.http.post('http://192.168.42.20:8765/bibliography/upload/file', formdata, {
       headers,
       observe: 'response',
       responseType: 'text'
@@ -43,7 +43,9 @@ export class UploadFileService {
     const headers = new HttpHeaders({Authorization: token});
 
     // @ts-ignore
-    return this.http.post('http://localhost:9001/upload/docx/to/pdf',
+    // return this.http.post('http://192.168.42.20:8765/bibliography/upload/docx/to/pdf',
+    // return this.http.post('http://localhost:8080/conversion?format=pdf',
+    return this.http.post('http://192.168.42.20:8765/report-service/conversion?format=pdf',
       formdata, {
       headers,
       observe: 'response',
@@ -66,7 +68,7 @@ export class UploadFileService {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({Authorization: token});
 
-    return this.http.post('http://localhost:9001/upload/bibliography/order',
+    return this.http.post('http://192.168.42.20:8765/bibliography/upload/bibliography/order',
       formdata, {
         headers,
         observe: 'response',
@@ -83,14 +85,6 @@ export class UploadFileService {
       );
   }
 
-  getFiles(): Observable<Object> {
-    return this.http.get('http://localhost:8080/upload/getallfiles');
-  }
-
-  getSth() {
-    return this.http.get('http://localhost:8080/getdata');
-  }
-
   login() {
     const login = {
       password: '',
@@ -100,8 +94,8 @@ export class UploadFileService {
     login.password = 'tomek';
     const headers = new HttpHeaders({'Content-type': 'application/json', Accept: 'application/json'});
 
-    this.http.post('http://localhost:9001/login', login, {
-    // this.http.post('http://192.168.42.66:8765/authorization-service/login', login, {
+    // this.http.post('http://localhost:9001/login', login, {
+    this.http.post('http://192.168.42.20:8765/authorization-service/login', login, {
       headers,
       observe: 'response',
       responseType: 'text'
@@ -113,11 +107,22 @@ export class UploadFileService {
       }, error1 => console.log(error1));
   }
 
+  getFiles(): Observable<Object> {
+    return this.http.get('http://localhost:8080/upload/getallfiles');
+  }
+
+  getSth() {
+    return this.http.get('http://localhost:8080/getdata');
+  }
+
+
+
+
   getLogic() {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({'Content-type': 'application/json', Accept: 'application/json', Authorization: token});
 
-    this.http.get<Publication>('http://localhost:9001/job/count/for/each/day', {
+    this.http.get<Publication>('http://192.168.42.20:8765/bibliography/job/count/for/each/day', {
       headers
     })
       .subscribe((value) => {

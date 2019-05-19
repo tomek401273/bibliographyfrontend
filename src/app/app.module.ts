@@ -29,6 +29,7 @@ import { PublicationsComponent } from './summary/publications/publications.compo
 import * as PlotlyJS from 'plotly.js/dist/plotly.js';
 import { PlotlyModule } from 'angular-plotly.js';
 import {AdminService} from './services/adminService';
+import { AdminInformationComponent } from './admin/admin-information/admin-information.component';
 
 PlotlyModule.plotlyjs = PlotlyJS;
 
@@ -48,6 +49,7 @@ PlotlyModule.plotlyjs = PlotlyJS;
     CockpitComponent,
     SummaryComponent,
     PublicationsComponent,
+    AdminInformationComponent,
   ],
   imports: [
     BrowserModule,
