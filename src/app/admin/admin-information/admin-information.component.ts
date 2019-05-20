@@ -36,6 +36,6 @@ export class AdminInformationComponent implements OnInit {
   }
 
   createNewUser() {
-    this.adminService.crateNewUser('tomek224');
+    // this.adminService.crateNewUser('tomek224');
   }
 }

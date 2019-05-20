@@ -47,8 +47,6 @@ export class FormUploadComponent implements OnInit {
     this.uploadService.getSth().subscribe(value => console.log(value), error1 => console.log(error1));
   }
 
-  loginOnServer() {
-    this.uploadService.login();
-  }
+
 
 }

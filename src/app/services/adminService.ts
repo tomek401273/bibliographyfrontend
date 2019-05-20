@@ -3,6 +3,8 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Publication} from '../model/publication';
 import {JobDtos} from '../model/job-dtos';
 import {saveAs} from 'file-saver';
+import {User} from '../model/user';
+import {UserDto} from '../model/user-dto';
 
 @Injectable()
 export class AdminService {
@@ -31,18 +33,15 @@ export class AdminService {
     });
   }
 
-  crateNewUser(newLogin: string) {
-    const login = {
-      password: '',
-      login: ''
-    };
-    login.login = newLogin;
-    login.password = 'tomek';
+  crateNewUser(user: User) {
+    console.log(user);
+    const userDto = new UserDto(user.login, user.password)
     const headers = new HttpHeaders({'Content-type': 'application/json', Accept: 'application/json'});
-    this.http.post('http://192.168.42.20:8765/authorization-service/auth/signup', login, {
-      headers
-    }).subscribe((value => {
-      console.log(value);
-    }), error1 => console.log(error1));
-  }
+    this.http.post('http://192.168.42.20:8765/authorization-service/auth/signup', userDto, {
+        headers
+      }).subscribe((value => {
+        console.log(value);
+      }), error1 => console.log(error1));
+    }
+
 }

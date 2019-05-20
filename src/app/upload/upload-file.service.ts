@@ -6,6 +6,8 @@ import { saveAs } from 'file-saver';
 // import { Observable, Subscriber } from 'rxjs';
 import { tap, map, filter } from 'rxjs/operators';
 import {JSONP_ERR_WRONG_RESPONSE_TYPE} from '@angular/common/http/src/jsonp';
+import {User} from '../model/user';
+import {UserDto} from '../model/user-dto';
 @Injectable()
 export class UploadFileService {
 
@@ -85,17 +87,10 @@ export class UploadFileService {
       );
   }
 
-  login() {
-    const login = {
-      password: '',
-      login: ''
-    };
-    login.login = 'tomek';
-    login.password = 'tomek';
+  login(user: User) {
+    const userDto = new UserDto(user.login, user.password);
     const headers = new HttpHeaders({'Content-type': 'application/json', Accept: 'application/json'});
-
-    // this.http.post('http://localhost:9001/login', login, {
-    this.http.post('http://192.168.42.20:8765/authorization-service/login', login, {
+    this.http.post('http://192.168.42.20:8765/authorization-service/login', userDto, {
       headers,
       observe: 'response',
       responseType: 'text'
