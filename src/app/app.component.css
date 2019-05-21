@@ -1,0 +1,45 @@
+.center-element {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /*text-align: center;*/
+}
+.footer{
+  position: absolute;
+  bottom: 0;
+}
+
+/*.footer {*/
+/*  !*position: absolute;*!*/
+/*  !*bottom: 0;*!*/
+/*  !*width: 100%;*!*/
+/*  !*height: 100px;*!*/
+/*  !*!*display: block;*!*!*/
+/*  !*border-top: solid black 1px;*!*/
+/*  position: fixed;*/
+/*  left: 0;*/
+/*  bottom: 0;*/
+/*  width: 100%;*/
+/*  height: 60px;*/
+/*  !*background-color: red;*!*/
+/*  !*color: white;*!*/
+/*  !*text-align: center;*!*/
+/*}*/
+
+
+/*.company {*/
+/*  margin: 20px;*/
+/*}*/
+
+/*p {*/
+/*  display: table;*/
+/*  margin-left: auto;*/
+/*  margin-right: auto;*/
+/*}*/
+
+/*p:after {*/
+/*  border-bottom: 1px solid black;*/
+/*  content: '';*/
+/*  display: block;*/
+/*  width: 100%;*/
+/*}*/

@@ -37,11 +37,9 @@ export class AdminService {
     console.log(user);
     const userDto = new UserDto(user.login, user.password)
     const headers = new HttpHeaders({'Content-type': 'application/json', Accept: 'application/json'});
-    this.http.post('http://192.168.42.20:8765/authorization-service/auth/signup', userDto, {
+    return this.http.post('http://192.168.42.20:8765/authorization-service/auth/signup', userDto, {
         headers
-      }).subscribe((value => {
-        console.log(value);
-      }), error1 => console.log(error1));
+      });
     }
 
 }

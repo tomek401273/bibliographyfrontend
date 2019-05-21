@@ -90,16 +90,11 @@ export class UploadFileService {
   login(user: User) {
     const userDto = new UserDto(user.login, user.password);
     const headers = new HttpHeaders({'Content-type': 'application/json', Accept: 'application/json'});
-    this.http.post('http://192.168.42.20:8765/authorization-service/login', userDto, {
+    return this.http.post('http://192.168.42.20:8765/authorization-service/login', userDto, {
       headers,
       observe: 'response',
       responseType: 'text'
-    })
-      .subscribe((value: HttpResponse<string>) => {
-        const token = value.headers.get('authorization');
-        console.log(token);
-        localStorage.setItem('token', token);
-      }, error1 => console.log(error1));
+    });
   }
 
   getFiles(): Observable<Object> {

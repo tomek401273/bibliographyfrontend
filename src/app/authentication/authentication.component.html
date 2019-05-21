@@ -12,8 +12,12 @@
 <!--    </ul>-->
 <!--  </div>-->
 <!--</div>-->
+<div class="" *ngIf="isAuthenticated==true">
+  <div class="center-element"><h5 *ngIf="isAuthenticated" class="welcome"> {{loginUser}}</h5></div>
+  <button class="btn btn-primary logout" (click)="onLogOut()">Log out</button>
+</div>
 
-<div class="dropdown">
+<div class="dropdown" *ngIf="isAuthenticated==false">
   <button class="btn btn-primary dropdown-toggle"
           type="button"
           id="dropdownMenuButton"
@@ -24,62 +28,64 @@
     Get in
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" data-toggle="modal" data-target="#exampleModalCenter" >Log in</a>
+    <a class="dropdown-item" (click)="openModal(template)" >Log in</a>
     <a class="dropdown-item" (click)="onRedirect('/signup')">Sign up</a>
   </div>
 </div>
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class=" ">
-          <div class="center-element">
-            <h5 class="modal-title">Login into Bibliography</h5>
-          </div>
-        <hr>
-      </div>
 
-      <div class="modal-body">
-        <form (ngSubmit)="onSubmit()" #form="ngForm" id="loginForm">
-          <div class="form-group">
-            <div class="text-center">
-              <label>Login</label>
+<swal #error title="Error" text="Logging attempt failed. Please check your login and password" type="error"></swal>
+
+<ng-template #template >
+
+
+
+        <div class="modal-body">
+          <div class=" ">
+            <div class="center-element">
+              <h5 class="modal-title">Login into Bibliography</h5>
             </div>
-            <input class="form-control"
-                   type="text"
-                   ngModel
-                   name="login"
-                   required
-                   email
-                   pattern=".{6,}"
-                   #login="ngModel"
-                   >
-
-<!--            <div class="text-center">-->
-<!--              <span class="help-block" *ngIf="!login.valid && login.touched">Please fill login </span>-->
-<!--            </div>-->
-            <br/>
-            <div class="text-center">
-             <label>Password</label>
-           </div>
-            <input class="form-control"
-                   type="text"
-                   ngModel
-                   name="password"
-                   required
-                   pattern=".{1,}"
-                   #password="ngModel"
-            >
-<!--            <div class="text-center">-->
-<!--              <span class="help-block" *ngIf="password.invalid && password.touched">Please fill password</span>-->
-<!--            </div>-->
+            <hr>
           </div>
-          <div class="center-element">
-            <button class="btn btn-primary center-block login-btn" type="submit">LOGIN</button>
-          </div>
-        </form>
+          <form (ngSubmit)="onSubmit(form)" #form="ngForm" id="loginForm">
+            <div class="form-group">
+              <div class="text-center">
+                <label>Login</label>
+              </div>
+              <input class="form-control"
+                     type="text"
+                     ngModel
+                     name="login"
+                     required
+                     email
+                     pattern=".{6,}"
+                     #login="ngModel"
+              >
 
-      </div>
-    </div>
-  </div>
-</div>
+              <!--            <div class="text-center">-->
+              <!--              <span class="help-block" *ngIf="!login.valid && login.touched">Please fill login </span>-->
+              <!--            </div>-->
+              <br/>
+              <div class="text-center">
+                <label>Password</label>
+              </div>
+              <input class="form-control"
+                     type="password"
+                     ngModel
+                     name="password"
+                     required
+                     pattern=".{1,}"
+                     #password="ngModel"
+              >
+              <!--            <div class="text-center">-->
+              <!--              <span class="help-block" *ngIf="password.invalid && password.touched">Please fill password</span>-->
+              <!--            </div>-->
+            </div>
+            <p class="text-center message" *ngIf="message.length>0"><span class="alert-danger ">{{message}}</span></p>
+            <div class="center-element">
+              <button class="btn btn-primary center-block login-btn" type="submit">LOGIN</button>
+            </div>
+          </form>
+        </div>
+
+</ng-template>
+

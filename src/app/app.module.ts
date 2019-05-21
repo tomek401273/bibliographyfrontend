@@ -31,9 +31,9 @@ import { PlotlyModule } from 'angular-plotly.js';
 import {AdminService} from './services/adminService';
 import { AdminInformationComponent } from './admin/admin-information/admin-information.component';
 import { SignupComponent } from './authentication/signup/signup.component';
-
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 PlotlyModule.plotlyjs = PlotlyJS;
-
+import { ModalModule } from 'ngx-bootstrap/modal';
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,7 +64,10 @@ PlotlyModule.plotlyjs = PlotlyJS;
     MatToolbarModule,
     FileHelpersModule,
     MatTableModule,
-    PlotlyModule
+    PlotlyModule,
+    SweetAlert2Module.forRoot(),
+    ModalModule.forRoot()
+
   ],
   providers: [UploadFileService, AuthGuard, LogingService, AdminService],
   bootstrap: [AppComponent]
