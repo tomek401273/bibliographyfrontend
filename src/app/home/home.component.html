@@ -13,7 +13,6 @@
 
     <mat-tab label="Convert To Pdf">
       <div class="tab-container">
-        Data data2
         <app-file-dropzone-demo
           (dataOutput)="handleFile2($event)"
         ></app-file-dropzone-demo>
@@ -22,17 +21,15 @@
 
     <mat-tab label="Order Bibliography">
       <div class="tab-container">
-        Data data2
         <app-file-dropzone-demo
           (dataOutput)="handleFile3($event)"
         ></app-file-dropzone-demo>
       </div>
     </mat-tab>
 
-    <mat-tab label="Information">
+    <mat-tab label="Information" *ngIf="adminPanel">
       <div class="tab-container">
         <div class="center-element">
-          <p>Information about the author</p>
           <app-admin-information></app-admin-information>
         </div>
       </div>

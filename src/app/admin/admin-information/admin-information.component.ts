@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {AdminService} from '../../services/adminService';
 import {JobDtos} from '../../model/job-dtos';
+import {saveAs} from 'file-saver';
+import {SwalComponent} from '@sweetalert2/ngx-sweetalert2';
 
 @Component({
   selector: 'app-admin-information',
@@ -18,6 +20,16 @@ export class AdminInformationComponent implements OnInit {
     layout: {width: 1000, height: 500, title: 'A Fancy Plot'}
   };
 
+  private error: SwalComponent = new SwalComponent({
+    position: 'top',
+    type: 'error',
+    title: 'Something something go wrong. Please contact with our service.',
+    showConfirmButton: false,
+    timer: 1500,
+    showCloseButton: true
+  });
+
+
   constructor(private adminService: AdminService) {
     this.adminService.getCountJobsInEachDay()
       .subscribe((value: JobDtos) => {
@@ -32,10 +44,15 @@ export class AdminInformationComponent implements OnInit {
   ngOnInit() {
   }
   getReport() {
-    this.adminService.getReport();
+    this.adminService.getReport().subscribe(value => {
+      console.log(value);
+      const blob = new Blob([value.body], {type: 'application/pdf'});
+      const filename = 'report';
+      saveAs(blob, filename);
+    }, error1 => {
+      console.log(error1);
+      this.error.show();
+    });
   }
 
-  createNewUser() {
-    // this.adminService.crateNewUser('tomek224');
-  }
 }

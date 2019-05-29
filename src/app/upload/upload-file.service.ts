@@ -52,15 +52,7 @@ export class UploadFileService {
       headers,
       observe: 'response',
       responseType: 'blob'
-    })
-      .subscribe(response => {
-        console.log(response);
-
-        const blob = new Blob([response.body], {type: 'application/pdf'});
-        const filename = 'file.pdf';
-        saveAs(blob, filename);
-      },
-    );
+    });
   }
 
   orderBigliography(file: File) {
@@ -75,16 +67,7 @@ export class UploadFileService {
         headers,
         observe: 'response',
         responseType: 'blob'
-      })
-
-
-      .subscribe(response => { // download file
-          console.log(response);
-          const blob = new Blob([response.body], {type: 'text/plain'});
-          const filename = 'file.txt';
-          saveAs(blob, filename);
-        },
-      );
+      });
   }
 
   login(user: User) {

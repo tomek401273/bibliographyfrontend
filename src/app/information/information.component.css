@@ -1,0 +1,24 @@
+.desciption{
+position: relative;
+  top: 50px;
+}
+
+.center-element {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+img {
+  /*width: px;*/
+  height: auto;
+
+  /*position: relative;*/
+  /*top: 60px;*/
+}
+
+
+.container {
+  /*border: solid black 1px;*/
+  /*width: 40%;*/
+}

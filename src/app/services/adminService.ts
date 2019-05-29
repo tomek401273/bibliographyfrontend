@@ -25,11 +25,6 @@ export class AdminService {
       headers,
       observe: 'response',
       responseType: 'blob'
-    }).subscribe(value => {
-      console.log(value);
-      const blob = new Blob([value.body], {type: 'application/pdf'});
-      const filename = 'report';
-      saveAs(blob, filename);
     });
   }
 
