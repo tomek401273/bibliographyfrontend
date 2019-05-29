@@ -3,3 +3,19 @@
   align-items: center;
   justify-content: center;
 }
+
+.chart {
+  position: relative;
+  width: 1000px;
+  height: 500px
+}
+
+
+@media only screen and (min-width: 991px) {
+  .chart {
+    position: relative;
+    width: 1000px;
+    height: 1000px
+  }
+
+}

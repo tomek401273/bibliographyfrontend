@@ -17,7 +17,7 @@ export class AdminInformationComponent implements OnInit {
         fill: 'tozeroy',
       }
     ],
-    layout: {width: 1000, height: 500, title: 'A Fancy Plot'}
+    layout: {title: 'A Fancy Plot'}
   };
 
   private error: SwalComponent = new SwalComponent({
