@@ -17,6 +17,7 @@ export class UploadFileService {
     const formdata: FormData = new FormData();
 
     formdata.append('file', file);
+    formdata.append('login', localStorage.getItem('login'));
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({Authorization: token});
     const req = new HttpRequest('POST', 'http://192.168.42.20:8765/bibliography/upload/file', formdata, {
