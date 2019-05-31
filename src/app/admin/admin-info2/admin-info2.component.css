@@ -1,0 +1,20 @@
+.plot {
+  /*position: absolute;*/
+  /*right: 400px;*/
+  /*width: 100px;*/
+  /*height: 300px;*/
+}
+
+/*@media only screen and (min-width: 991px) {*/
+/*  .plot {*/
+/*    position: relative;*/
+/*    width: 200px;*/
+/*    height: 200px*/
+/*  }*/
+
+/*}*/
+.center-element {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

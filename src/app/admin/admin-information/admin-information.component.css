@@ -5,23 +5,21 @@
 }
 /*.chart {*/
 /*  position: relative;*/
-/*  width: 500px;*/
-/*  height: 500px*/
+/*  width: 1px;*/
+/*  height: 1px*/
+/*  !important;*/
 /*}*/
-.chart2 {
-  /*position: relative;*/
-  /*right: 300px;*/
-}
+
 
 @media only screen and (max-width: 991px) {
 
 
 }
 @media only screen and (min-width: 991px) {
-  .chart {
-    position: relative;
-    width: 1200px;
-    height: 1200px
-  }
+  /*.chart {*/
+  /*  position: relative;*/
+  /*  width: 1200px;*/
+  /*  height: 1200px*/
+  /*}*/
 
 }
