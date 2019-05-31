@@ -34,6 +34,7 @@ import { SignupComponent } from './authentication/signup/signup.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 PlotlyModule.plotlyjs = PlotlyJS;
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { AdminInfo2Component } from './admin/admin-info2/admin-info2.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,6 +53,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     PublicationsComponent,
     AdminInformationComponent,
     SignupComponent,
+    AdminInfo2Component,
   ],
   imports: [
     BrowserModule,
