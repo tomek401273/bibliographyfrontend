@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {UploadFileService} from './upload/upload-file.service';
 import {SwalComponent} from '@sweetalert2/ngx-sweetalert2';
 import {LogingService} from './services/loging.service';
+import {AdminService} from './services/adminService';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,11 @@ export class AppComponent implements OnInit{
   private loggingTimeout;
   @ViewChild('info') private info: SwalComponent;
 
-  constructor(private uploadService: UploadFileService, private logingService: LogingService) {}
+  constructor(private uploadService: UploadFileService, private logingService: LogingService, private adminService: AdminService) {
+    console.log('appcontroller');
+    this.adminService.getCountJobsInEachDay()
+    console.log('end');
+  }
 
 
   ngOnInit() {

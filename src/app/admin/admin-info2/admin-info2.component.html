@@ -1,9 +1,35 @@
-<div class="container">
-  <div class="row">
-    <div class="plot">
-      <plotly-plot [data]="graph.data" [layout]="graph.layout"
-                   [useResizeHandler]="false">
-      </plotly-plot>
+<!--<highcharts-chart>-->
+<!--  [Highcharts] = "highcharts"-->
+<!--  [options] = "chartOptions"-->
+<!--  style = "width: 100%; height: 400px; display: block;"-->
+<!--</highcharts-chart>-->
+<div cllass="container">
+<div class="row">
+  <div class="col-12 col-sm-12">
+<div class="center-element">
+  <highcharts-chart class="plot"
+
+                            [Highcharts]="Highcharts"
+                            [constructorType]="'stockChart'"
+                            [options]="chartOptions">
+  </highcharts-chart>
+
+</div>
+
+
+<!--    <div-->
+<!--&lt;!&ndash;      (mousemove)="synchronizeTooltips($event)"&ndash;&gt;-->
+<!--&lt;!&ndash;      (touchmove)="synchronizeTooltips($event)"&ndash;&gt;-->
+<!--&lt;!&ndash;      (touchstart)="synchronizeTooltips($event)"&ndash;&gt;-->
+<!--    >-->
+
     </div>
   </div>
 </div>
+<!--</div>-->
+<hr>
+<p>logic logic</p>
+<button id="btn">Button</button>
+<div id="con">Button</div>
+<p>end</p>
+

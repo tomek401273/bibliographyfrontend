@@ -8,14 +8,49 @@ import {UserDto} from '../model/user-dto';
 
 @Injectable()
 export class AdminService {
+  private data = [];
+
   constructor(private http: HttpClient) {}
   getCountJobsInEachDay() {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({'Content-type': 'application/json', Accept: 'application/json', Authorization: token});
     // return this.http.get<JobDtos>('http://localhost:9001/job/count/for/each/day', {
-    return this.http.get<JobDtos>('http://192.168.42.20:8765/bibliography/job/count/for/each/day', {
+    return this.http.get('http://192.168.42.20:8765/bibliography/job/count/for/each/day2', {
+      headers
+    }).subscribe((value: any[]) => {
+      console.log('localStorageSetJobs');
+      localStorage.setItem('jobs', JSON.stringify(value));
+
+        //
+        // for (let i = 0; i < value.length; i++) {
+        //   let d = value[i];
+        //   console.log(d.date);
+        //   console.log(d.count);
+        //   this.data.push([d.date, d.count]);
+        // }
+
+
+        // console.log(value);
+
+        // console.log(this.data);
+        // console.log('end');
+      //
+      }
+    );
+  }
+
+
+  getCountJobsInEachDay2() {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({'Content-type': 'application/json', Accept: 'application/json', Authorization: token});
+    // return this.http.get<JobDtos>('http://localhost:9001/job/count/for/each/day', {
+    return this.http.get('http://192.168.42.20:8765/bibliography/job/count/for/each/day2', {
       headers
     });
+  }
+
+  getData() {
+    return this.data;
   }
 
   getReport() {

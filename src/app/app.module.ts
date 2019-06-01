@@ -35,6 +35,9 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 PlotlyModule.plotlyjs = PlotlyJS;
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { AdminInfo2Component } from './admin/admin-info2/admin-info2.component';
+// import { HighchartsChartComponent } from 'highcharts-angular';
+import { HighchartsChartModule } from 'highcharts-angular';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,6 +57,7 @@ import { AdminInfo2Component } from './admin/admin-info2/admin-info2.component';
     AdminInformationComponent,
     SignupComponent,
     AdminInfo2Component,
+    // HighchartsChartComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +72,8 @@ import { AdminInfo2Component } from './admin/admin-info2/admin-info2.component';
     MatTableModule,
     PlotlyModule,
     SweetAlert2Module.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    HighchartsChartModule
 
   ],
   providers: [UploadFileService, AuthGuard, LogingService, AdminService],
