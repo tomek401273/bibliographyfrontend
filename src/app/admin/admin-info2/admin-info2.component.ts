@@ -28,24 +28,12 @@ export class AdminInfo2Component implements OnInit {
   chartOptions = {};
 
   constructor(private adminService: AdminService) {
-    console.log('stirc');
     const jobs = JSON.parse(localStorage.getItem('jobs'));
-    console.log(jobs);
-
     for (let i = 0; i < jobs.length; i++) {
       const d = jobs[i];
-      console.log(d.date);
-      console.log(d.count);
       this.data.push([d.date, d.count]);
     }
 
-    console.log('----');
-
-
-    // this.data = adminService.getData();
-    console.log('info controller');
-    console.log(this.data);
-    console.log('info-end');
     this.chartOptions = {
 
       rangeSelector: {

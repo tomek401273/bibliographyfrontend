@@ -16,7 +16,12 @@
 .grow div:nth-child(2) {
   flex: 1;
 }
-
+.authentication {
+  width: 200px;
+  margin-left: 20px;
+  /*position: relative;*/
+  /*left: 50px;*/
+}
 
 @media only screen and (min-width: 991px) {
   .authentication {

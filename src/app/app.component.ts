@@ -15,13 +15,17 @@ export class AppComponent implements OnInit{
   @ViewChild('info') private info: SwalComponent;
 
   constructor(private uploadService: UploadFileService, private logingService: LogingService, private adminService: AdminService) {
-    console.log('appcontroller');
-    this.adminService.getCountJobsInEachDay()
-    console.log('end');
+    // console.log('appcontroller');
+    // this.adminService.getCountJobsInEachDay()
+    // console.log('end');
   }
 
 
   ngOnInit() {
+    console.log('initApp');
+    if (this.logingService.isAuthenticated()){
+      this.controlActiveSession();
+    }
     this.logingService.loginSuccessful
       .subscribe(
         () => {
@@ -50,6 +54,8 @@ export class AppComponent implements OnInit{
     const currentDate = new Date().getTime();
     const expiredToken: number = Number(localStorage.getItem('expiredToken'));
     const remainToken = expiredToken - currentDate;
+    console.log(currentDate);
+    console.log(expiredToken)
     console.log(remainToken);
 
     if (expiredToken > currentDate) {

@@ -37,6 +37,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { AdminInfo2Component } from './admin/admin-info2/admin-info2.component';
 // import { HighchartsChartComponent } from 'highcharts-angular';
 import { HighchartsChartModule } from 'highcharts-angular';
+import { AdminPanel3Component } from './authentication/admin-panel3/admin-panel3.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { HighchartsChartModule } from 'highcharts-angular';
     AdminInformationComponent,
     SignupComponent,
     AdminInfo2Component,
+    AdminPanel3Component,
     // HighchartsChartComponent
   ],
   imports: [

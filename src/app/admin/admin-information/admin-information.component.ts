@@ -31,14 +31,14 @@ export class AdminInformationComponent implements OnInit {
 
 
   constructor(private adminService: AdminService) {
-    // this.adminService.getCountJobsInEachDay()
-    //   .subscribe((value: JobDtos) => {
-    //       console.log(value);
-    //       this.graph.data[0].x = value.dateList;
-    //       this.graph.data[0].y = value.counts;
-    //       console.log(this.graph.data[0].x);
-    //     }
-    //   );
+    this.adminService.getCountJobsInEachDay0()
+      .subscribe((value: JobDtos) => {
+          console.log(value);
+          this.graph.data[0].x = value.dateList;
+          this.graph.data[0].y = value.counts;
+          console.log(this.graph.data[0].x);
+        }
+      );
   }
 
   ngOnInit() {

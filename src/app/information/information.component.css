@@ -10,8 +10,9 @@ position: relative;
 }
 
 img {
-  /*width: px;*/
-  height: auto;
+  display: block;
+  width: 100%;
+  /*height: auto;*/
 
   /*position: relative;*/
   /*top: 60px;*/
@@ -21,4 +22,15 @@ img {
 .container {
   /*border: solid black 1px;*/
   /*width: 40%;*/
+}
+@media only screen and (min-width: 991px){
+  img {
+    display: block;
+    width: 55%;
+    height: auto;
+
+    /*position: relative;*/
+    /*top: 60px;*/
+  }
+
 }

@@ -11,6 +11,16 @@ export class AdminService {
   private data = [];
 
   constructor(private http: HttpClient) {}
+
+
+  getCountJobsInEachDay0() {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({'Content-type': 'application/json', Accept: 'application/json', Authorization: token});
+    // return this.http.get<JobDtos>('http://localhost:9001/job/count/for/each/day', {
+    return this.http.get<JobDtos>('http://192.168.42.20:8765/bibliography/job/count/for/each/day', {
+      headers
+    });
+  }
   getCountJobsInEachDay() {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({'Content-type': 'application/json', Accept: 'application/json', Authorization: token});
@@ -40,18 +50,6 @@ export class AdminService {
   }
 
 
-  getCountJobsInEachDay2() {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders({'Content-type': 'application/json', Accept: 'application/json', Authorization: token});
-    // return this.http.get<JobDtos>('http://localhost:9001/job/count/for/each/day', {
-    return this.http.get('http://192.168.42.20:8765/bibliography/job/count/for/each/day2', {
-      headers
-    });
-  }
-
-  getData() {
-    return this.data;
-  }
 
   getReport() {
     const token = localStorage.getItem('token');

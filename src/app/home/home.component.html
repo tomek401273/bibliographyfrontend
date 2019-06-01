@@ -1,14 +1,15 @@
 <!--<form-upload></form-upload>-->
 <main class="mat-typography">
   <mat-tab-group dynamicHeight="true" mat-align-tabs="center">
-    <mat-tab label="Information" *ngIf="adminPanel">
-      <div class="tab-container">
-        <div class="center-element">
-          <app-admin-info2></app-admin-info2>
-        </div>
-      </div>
-    </mat-tab>
-    <mat-tab label="Information" *ngIf="adminPanel">
+<!--    <mat-tab label="Information" *ngIf="adminPanel">-->
+<!--      <div class="tab-container">-->
+<!--        <div class="center-element">-->
+<!--          <app-admin-info2></app-admin-info2>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </mat-tab>-->
+
+    <mat-tab label="Admin Panel" *ngIf="adminPanel">
       <div class="tab-container">
         <div class="center-element">
           <app-admin-information></app-admin-information>
@@ -42,7 +43,11 @@
         ></app-file-dropzone-demo>
       </div>
     </mat-tab>
-
+    <mat-tab label="Information">
+      <div class="tab-container">
+        <app-information></app-information>
+      </div>
+    </mat-tab>
 
   </mat-tab-group>
 
