@@ -2,16 +2,18 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpRequest, HttpEvent, HttpHeaders, HttpResponse} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {Publication} from '../model/publication';
-import { saveAs } from 'file-saver';
+import {saveAs} from 'file-saver';
 // import { Observable, Subscriber } from 'rxjs';
-import { tap, map, filter } from 'rxjs/operators';
+import {tap, map, filter} from 'rxjs/operators';
 import {JSONP_ERR_WRONG_RESPONSE_TYPE} from '@angular/common/http/src/jsonp';
 import {User} from '../model/user';
 import {UserDto} from '../model/user-dto';
+
 @Injectable()
 export class UploadFileService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   pushFileToStorage(file: File): Observable<HttpEvent<{}>> {
     const formdata: FormData = new FormData();
@@ -21,7 +23,7 @@ export class UploadFileService {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({Authorization: token});
     const req = new HttpRequest('POST', 'http://192.168.42.20:8765/bibliography/upload/file', formdata, {
-    // const req = new HttpRequest('POST', 'http://192.168.42.66:8765/bibliography/post', formdata, {
+      // const req = new HttpRequest('POST', 'http://192.168.42.66:8765/bibliography/post', formdata, {
       headers,
       reportProgress: true,
       responseType: 'text',
@@ -32,6 +34,19 @@ export class UploadFileService {
 
     // @ts-ignore
     return this.http.post('http://192.168.42.20:8765/bibliography/upload/file', formdata, {
+      headers,
+      observe: 'response',
+      responseType: 'text'
+    });
+  }
+
+  addNewJob(fileName) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({Authorization: token});
+    const login = localStorage.getItem('login');
+
+    // @ts-ignore
+    return this.http.post('http://192.168.42.20:8765/bibliography/job/save/new?login=' + login + '&fileName' + fileName, null, {
       headers,
       observe: 'response',
       responseType: 'text'
@@ -50,10 +65,10 @@ export class UploadFileService {
     // return this.http.post('http://localhost:8080/conversion?format=pdf',
     return this.http.post('http://192.168.42.20:8765/report-service/conversion?format=pdf',
       formdata, {
-      headers,
-      observe: 'response',
-      responseType: 'blob'
-    });
+        headers,
+        observe: 'response',
+        responseType: 'blob'
+      });
   }
 
   orderBigliography(file: File) {
@@ -90,8 +105,6 @@ export class UploadFileService {
   }
 
 
-
-
   getLogic() {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({'Content-type': 'application/json', Accept: 'application/json', Authorization: token});
@@ -100,7 +113,7 @@ export class UploadFileService {
       headers
     })
       .subscribe((value) => {
-        console.log( value);
+        console.log(value);
       }, error1 => console.log(error1));
   }
 
@@ -111,7 +124,6 @@ export class UploadFileService {
 //   return pub;
 // })
 // )
-
 
 
 }

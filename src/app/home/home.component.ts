@@ -52,6 +52,8 @@ export class HomeComponent implements OnInit {
             console.log(res);
             this.router.navigate(['/summary']);
           }
+          this.uploadService.addNewJob(uploadFile.file.name)
+            .subscribe(value1 => console.log(value1), error1 => console.log(error1));
           // value.body;
           // if (value.type === HttpEventType.UploadProgress) {
           //   this.progress.percentage = Math.round(100 * value.loaded / value.total);
