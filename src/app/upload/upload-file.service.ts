@@ -8,6 +8,7 @@ import {tap, map, filter} from 'rxjs/operators';
 import {JSONP_ERR_WRONG_RESPONSE_TYPE} from '@angular/common/http/src/jsonp';
 import {User} from '../model/user';
 import {UserDto} from '../model/user-dto';
+import {Server} from '../model/server';
 
 @Injectable()
 export class UploadFileService {
@@ -22,7 +23,7 @@ export class UploadFileService {
     formdata.append('login', localStorage.getItem('login'));
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({Authorization: token});
-    const req = new HttpRequest('POST', 'http://192.168.42.20:8765/bibliography/upload/file', formdata, {
+    const req = new HttpRequest('POST', Server.address + 'bibliography/upload/file', formdata, {
       // const req = new HttpRequest('POST', 'http://192.168.42.66:8765/bibliography/post', formdata, {
       headers,
       reportProgress: true,
@@ -33,7 +34,7 @@ export class UploadFileService {
 
 
     // @ts-ignore
-    return this.http.post('http://192.168.42.20:8765/bibliography/upload/file', formdata, {
+    return this.http.post(Server.address + 'bibliography/upload/file', formdata, {
       headers,
       observe: 'response',
       responseType: 'text'
@@ -46,7 +47,7 @@ export class UploadFileService {
     const login = localStorage.getItem('login');
 
     // @ts-ignore
-    return this.http.post('http://192.168.42.20:8765/bibliography/job/save/new?login=' + login + '&fileName' + fileName, null, {
+    return this.http.post(Server.address + 'bibliography/job/save/new?login=' + login + '&fileName=' + fileName, null, {
       headers,
       observe: 'response',
       responseType: 'text'
@@ -61,9 +62,9 @@ export class UploadFileService {
     const headers = new HttpHeaders({Authorization: token});
 
     // @ts-ignore
-    // return this.http.post('http://192.168.42.20:8765/bibliography/upload/docx/to/pdf',
+    // return this.http.post(Server.address+'bibliography/upload/docx/to/pdf',
     // return this.http.post('http://localhost:8080/conversion?format=pdf',
-    return this.http.post('http://192.168.42.20:8765/report-service/conversion?format=pdf',
+    return this.http.post(Server.address + 'report-service/conversion?format=pdf',
       formdata, {
         headers,
         observe: 'response',
@@ -78,7 +79,7 @@ export class UploadFileService {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({Authorization: token});
 
-    return this.http.post('http://192.168.42.20:8765/bibliography/upload/bibliography/order',
+    return this.http.post(Server.address + 'bibliography/upload/bibliography/order',
       formdata, {
         headers,
         observe: 'response',
@@ -89,7 +90,7 @@ export class UploadFileService {
   login(user: User) {
     const userDto = new UserDto(user.login, user.password);
     const headers = new HttpHeaders({'Content-type': 'application/json', Accept: 'application/json'});
-    return this.http.post('http://192.168.42.20:8765/authorization-service/login', userDto, {
+    return this.http.post(Server.address + 'authorization-service/login', userDto, {
       headers,
       observe: 'response',
       responseType: 'text'
@@ -109,7 +110,7 @@ export class UploadFileService {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({'Content-type': 'application/json', Accept: 'application/json', Authorization: token});
 
-    this.http.get<Publication>('http://192.168.42.20:8765/bibliography/job/count/for/each/day', {
+    this.http.get<Publication>(Server.address + 'bibliography/job/count/for/each/day', {
       headers
     })
       .subscribe((value) => {

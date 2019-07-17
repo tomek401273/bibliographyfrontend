@@ -5,56 +5,41 @@ import {JobDtos} from '../model/job-dtos';
 import {saveAs} from 'file-saver';
 import {User} from '../model/user';
 import {UserDto} from '../model/user-dto';
+import {Server} from '../model/server';
 
 @Injectable()
 export class AdminService {
   private data = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
 
   getCountJobsInEachDay0() {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({'Content-type': 'application/json', Accept: 'application/json', Authorization: token});
-    // return this.http.get<JobDtos>('http://localhost:9001/job/count/for/each/day', {
-    return this.http.get<JobDtos>('http://192.168.42.20:8765/bibliography/job/count/for/each/day', {
+    return this.http.get<JobDtos>(Server.address + 'bibliography/job/count/for/each/day', {
       headers
     });
   }
+
   getCountJobsInEachDay() {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({'Content-type': 'application/json', Accept: 'application/json', Authorization: token});
-    // return this.http.get<JobDtos>('http://localhost:9001/job/count/for/each/day', {
-    return this.http.get('http://192.168.42.20:8765/bibliography/job/count/for/each/day2', {
+    return this.http.get(Server.address + 'bibliography/job/count/for/each/day2', {
       headers
     }).subscribe((value: any[]) => {
-      console.log('localStorageSetJobs');
-      localStorage.setItem('jobs', JSON.stringify(value));
-
-        //
-        // for (let i = 0; i < value.length; i++) {
-        //   let d = value[i];
-        //   console.log(d.date);
-        //   console.log(d.count);
-        //   this.data.push([d.date, d.count]);
-        // }
-
-
-        // console.log(value);
-
-        // console.log(this.data);
-        // console.log('end');
-      //
+        console.log('localStorageSetJobs');
+        localStorage.setItem('jobs', JSON.stringify(value));
       }
     );
   }
 
 
-
   getReport() {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({'Content-type': 'application/json', Accept: 'application/json', Authorization: token});
-    return this.http.get('http://192.168.42.20:8765/report-service/generate', {
+    return this.http.get(Server.address + 'report-service/generate', {
       headers,
       observe: 'response',
       responseType: 'blob'
@@ -63,11 +48,11 @@ export class AdminService {
 
   crateNewUser(user: User) {
     console.log(user);
-    const userDto = new UserDto(user.login, user.password)
+    const userDto = new UserDto(user.login, user.password);
     const headers = new HttpHeaders({'Content-type': 'application/json', Accept: 'application/json'});
-    return this.http.post('http://192.168.42.20:8765/authorization-service/auth/signup', userDto, {
-        headers
-      });
-    }
+    return this.http.post(Server.address + 'authorization-service/auth/signup', userDto, {
+      headers
+    });
+  }
 
 }
